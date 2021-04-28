@@ -1,6 +1,7 @@
 import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import AreaChart from '../features/area-charts/AreaChart';
+import CandlestickChart from '../features/candlestick-charts/CandlestickChart';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -22,6 +23,9 @@ const Contents: React.FC = () => {
       <Grid container spacing={3} className={classes.mainContents}>
         <Grid item xl={12} xs={12}>
           <AreaChart />
+        </Grid>
+        <Grid item xl={12} xs={12}>
+          <CandlestickChart />
         </Grid>
       </Grid>
     </Container>
