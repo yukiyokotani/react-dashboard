@@ -11,7 +11,8 @@
     "lint": "eslint --ext .ts,.tsx",
     "fix": "eslint --fix --ext .ts,.tsx",
     "test": "jest",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [
@@ -63,6 +64,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.1.0",
     "prettier": "^2.2.1",
+    "source-map-explorer": "^2.5.2",
     "ts-jest": "^26.5.3",
     "typescript": "^4.2.3"
   },
