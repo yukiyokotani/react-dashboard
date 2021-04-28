@@ -11,7 +11,7 @@ export type CandlestickChartData = {
 };
 
 export const getData = createAsyncThunk<CandlestickChartData[]>(
-  'CandlestickChart/getData',
+  'candlestickChart/getData',
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
@@ -36,8 +36,8 @@ const initialState: {
   isLoading: false,
 };
 
-const CandlestickChartSlice = createSlice({
-  name: 'CandlestickChart',
+const candlestickChartSlice = createSlice({
+  name: 'candlestickChart',
   initialState,
   reducers: {
     clearCondition: () => initialState,
@@ -56,4 +56,4 @@ const CandlestickChartSlice = createSlice({
   },
 });
 
-export default CandlestickChartSlice;
+export default candlestickChartSlice;
