@@ -15,7 +15,7 @@ export const getData = createAsyncThunk<CandlestickChartData[]>(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `${process.env.PUBLIC_URL}/dummy-data/Candlestick-chart.json`
+        `${process.env.PUBLIC_URL}/dummy-data/candlestick-chart.json`
       );
       const data = await response.json();
       return data;
