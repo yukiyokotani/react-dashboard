@@ -138,10 +138,16 @@ const CumulativeChart: React.FC = () => {
           },
         },
         title: {
-          text: '全国新規陽性者数 (人)',
+          text: '人数 (人)',
           style: {
             color: isDarkTheme ? colors.grey[300] : colors.grey[900],
           },
+        },
+        logarithmic: true,
+      },
+      legend: {
+        labels: {
+          colors: isDarkTheme ? colors.grey[300] : colors.grey[900],
         },
       },
       tooltip: {
@@ -183,7 +189,7 @@ const CumulativeChart: React.FC = () => {
           <Card>
             <Box p={2}>
               <Typography variant="body1" align="center">
-                COVID-19 全国新規陽性者数推移
+                COVID-19 全国累計陽性者数及び累計死亡者数推移
               </Typography>
               <ReactApexChart
                 options={options}

@@ -26,9 +26,6 @@ const Contents: React.FC = () => {
           <AreaChart />
         </Grid>
         <Grid item xl={12} xs={12}>
-          <CandlestickChart />
-        </Grid>
-        <Grid item xl={12} xs={12}>
           <CumulativeChart />
         </Grid>
       </Grid>
