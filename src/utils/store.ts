@@ -1,12 +1,14 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import areaChartSlice from '../features/area-charts/areaChartSlice';
 import candlestickChartSlice from '../features/candlestick-charts/candlestickChartSlice';
+import cumulativeChartSlice from '../features/cumulative-charts/cumulativeChartSlice';
 import themeSlice from '../features/theme/themeSlice';
 
 const rootReducer = combineReducers({
   theme: themeSlice.reducer,
   areaChart: areaChartSlice.reducer,
   candlestickChart: candlestickChartSlice.reducer,
+  cumulativeChart: cumulativeChartSlice.reducer,
 });
 
 const store = configureStore({

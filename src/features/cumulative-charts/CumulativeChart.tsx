@@ -13,7 +13,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../utils/store';
-import { AreaChartData, getData } from './areaChartSlice';
+import { NPositivesData, NDeathsData, getData } from './cumulativeChartSlice';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-const AreaChart: React.FC = () => {
+const CumulativeChart: React.FC = () => {
   const classes = useStyles();
 
   const dispatch: AppDispatch = useDispatch();
@@ -36,18 +36,26 @@ const AreaChart: React.FC = () => {
     (state) => state.theme.isDarkTheme
   );
 
-  const seriesJson = useSelector<RootState, AreaChartData[]>(
-    (state) => state.areaChart.series
+  const nPositivesSeriesJson = useSelector<RootState, NPositivesData[]>(
+    (state) => state.cumulativeChart.nPositivesSeries ?? []
+  );
+
+  const nDeathsSeriesJson = useSelector<RootState, NDeathsData[]>(
+    (state) => state.cumulativeChart.nDeathsSeries ?? []
   );
 
   const series = useMemo(
     () => [
       {
-        name: '新規陽性者数',
-        data: seriesJson.map((row) => [row.date, row.adpatients]),
+        name: '累計陽性者数',
+        data: nPositivesSeriesJson.map((row) => [row.date, row.npatients]),
+      },
+      {
+        name: '累計死亡者数',
+        data: nDeathsSeriesJson.map((row) => [row.date, row.ndeaths]),
       },
     ],
-    [seriesJson]
+    [nDeathsSeriesJson, nPositivesSeriesJson]
   );
 
   const options = useMemo<ApexOptions>(
@@ -159,14 +167,14 @@ const AreaChart: React.FC = () => {
   );
 
   // メソッド定義
-  const getAreaChartData = useCallback(async () => {
+  const getCumulativeChartData = useCallback(async () => {
     dispatch(getData());
   }, [dispatch]);
 
   // 副作用定義
   useEffect(() => {
-    getAreaChartData();
-  }, [getAreaChartData]);
+    getCumulativeChartData();
+  }, [getCumulativeChartData]);
 
   return (
     <Container maxWidth="md" className={classes.root}>
@@ -191,4 +199,4 @@ const AreaChart: React.FC = () => {
   );
 };
 
-export default AreaChart;
+export default CumulativeChart;

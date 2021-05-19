@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export type AreaChartData = {
-  time: number;
-  value: number;
+  date: string;
+  npatients: number;
+  adpatients: number;
 };
 
 export const getData = createAsyncThunk<AreaChartData[]>(
@@ -10,7 +11,8 @@ export const getData = createAsyncThunk<AreaChartData[]>(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `${process.env.PUBLIC_URL}/dummy-data/area-chart.json`
+        // `${process.env.PUBLIC_URL}/dummy-data/area-chart.json`
+        'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'
       );
       const data = await response.json();
       return data;

@@ -2,6 +2,7 @@ import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import AreaChart from '../features/area-charts/AreaChart';
 import CandlestickChart from '../features/candlestick-charts/CandlestickChart';
+import CumulativeChart from '../features/cumulative-charts/CumulativeChart';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -26,6 +27,9 @@ const Contents: React.FC = () => {
         </Grid>
         <Grid item xl={12} xs={12}>
           <CandlestickChart />
+        </Grid>
+        <Grid item xl={12} xs={12}>
+          <CumulativeChart />
         </Grid>
       </Grid>
     </Container>
